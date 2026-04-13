@@ -1,0 +1,150 @@
+version: "2"
+type: frontend
+tech_stack:
+  - language: JavaScript (React)
+  - framework: Next.js 16 (App Router)
+  - ui_library: Vanilla CSS with CSS custom properties
+  - other: Material Symbols Icons, mobile-first layout
+routes:
+  - path: /
+    file: src/app/page.js
+    auth_required: false
+    description: Animated splash screen with CTA button to navigate to login
+  - path: /login
+    file: src/app/login/page.js
+    auth_required: false
+    description: OTP-based login - enter mobile number, receive OTP, verify to access dashboard
+  - path: /dashboard
+    file: src/app/dashboard/page.js
+    auth_required: true
+    description: Main dashboard with quick services tray, notices, and application status
+  - path: /property-tax
+    file: src/app/property-tax/page.js
+    auth_required: true
+    description: 3-step property tax payment flow - search, view details, pay
+  - path: /complaints
+    file: src/app/complaints/page.js
+    auth_required: true
+    description: Submit new civic complaints and view existing complaint history
+  - path: /notifications
+    file: src/app/notifications/page.js
+    auth_required: true
+    description: List of municipal notifications - alerts, success messages, and info
+  - path: /services
+    file: src/app/services/page.js
+    auth_required: true
+    description: Full list of all available municipal services
+  - path: /profile
+    file: src/app/profile/page.js
+    auth_required: true
+    description: Citizen profile information page
+features:
+  - name: Splash Screen Navigation
+    description: Animated landing splash screen that transitions to login on button click
+    files:
+      - src/app/page.js
+    entry_route: /
+    user_interactions:
+      - Wait for splash animation phases to complete (approx 1.5s)
+      - View animated logo and title text appearing
+      - Click the "प्रवेश करा" CTA button
+      - Get redirected to /login
+    api_calls: []
+    auth_required: false
+  - name: OTP Login
+    description: Mobile number input followed by a 4-digit OTP verification to log in
+    files:
+      - src/app/login/page.js
+    entry_route: /login
+    user_interactions:
+      - Enter 10-digit mobile number in #mobile-input field
+      - Click #send-otp-btn "OTP पाठवा" button (enabled only when 10 digits entered)
+      - Enter digits in OTP input fields #otp-0 through #otp-3
+      - Click #verify-otp-btn "सत्यापित करा" button
+      - See loading spinner during verification
+      - Get redirected to /dashboard after verification
+    api_calls: []
+    auth_required: false
+  - name: Dashboard Quick Services
+    description: Dashboard home page showing quick service shortcuts and municipal notices
+    files:
+      - src/app/dashboard/page.js
+      - src/components/BottomNav.js
+    entry_route: /dashboard
+    user_interactions:
+      - View "त्वरित सेवा" section with 4 service cards
+      - Click "मालमत्ता कर" card to navigate to /property-tax
+      - Click "तक्रार नोंदणी" card to navigate to /complaints
+      - View "महत्वाच्या सूचना" notice section
+      - View "तुमचा अर्ज स्थिती" application status section with badges
+      - Use BottomNav to switch between pages
+    api_calls: []
+    auth_required: true
+  - name: Property Tax Payment
+    description: 3-step flow to search property, view tax details, and complete payment
+    files:
+      - src/app/property-tax/page.js
+    entry_route: /property-tax
+    user_interactions:
+      - Enter property ID in search input
+      - Click "शोध घ्या" search button
+      - View mocked property details (owner name, address, tax breakdown)
+      - Click "सशुल्क करा" payment button
+      - See loading/processing state
+      - View payment success confirmation with receipt number
+    api_calls: []
+    auth_required: true
+  - name: Complaint Registration
+    description: Submit new civic complaints via a form and view existing complaints in a tab view
+    files:
+      - src/app/complaints/page.js
+    entry_route: /complaints
+    user_interactions:
+      - View "नवीन तक्रार" tab active by default
+      - Select complaint category from dropdown
+      - Enter complaint description in textarea
+      - Enter location in text input
+      - Click "तक्रार नोंदवा" submit button
+      - See "नोंदवत आहे..." loading state
+      - View success card "तक्रार नोंदवली!"
+      - Switch to "माझ्या तक्रारी" tab to view history
+      - See mock complaints C-1092 and C-0845 with status badges
+    api_calls: []
+    auth_required: true
+  - name: Notifications List
+    description: View municipal notifications categorized as alert, success, and info
+    files:
+      - src/app/notifications/page.js
+    entry_route: /notifications
+    user_interactions:
+      - View list of 3 notifications
+      - See blue unread dot indicator on unread notification
+      - View notification icon types (warning/check_circle/info)
+      - View notification date stamps
+    api_calls: []
+    auth_required: true
+  - name: Bottom Navigation
+    description: Persistent tab bar for navigating between authenticated pages
+    files:
+      - src/components/BottomNav.js
+    entry_route: /dashboard
+    user_interactions:
+      - Click Home tab to navigate to /dashboard
+      - Click Services tab to navigate to /services
+      - Click Complaints tab to navigate to /complaints
+      - Click Profile/Notifications tab
+    api_calls: []
+    auth_required: true
+known_limitations:
+  - issue: OTP login is fully mocked - any 10-digit number and any 4 OTP digits work
+    location: src/app/login/page.js
+    impact: No real authentication validation
+  - issue: Property tax payment is mocked - no real payment gateway
+    location: src/app/property-tax/page.js
+    impact: Payment always succeeds after timeout
+  - issue: Complaint submission is mocked - data not persisted to backend
+    location: src/app/complaints/page.js
+    impact: Form submit always succeeds after timeout
+  - issue: All data (notices, application status, complaints) is hardcoded mock data
+    location: src/app/dashboard/page.js
+    impact: No real API calls made

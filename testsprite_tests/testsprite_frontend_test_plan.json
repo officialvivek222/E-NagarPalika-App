@@ -1,0 +1,792 @@
+[
+  {
+    "id": "TC001",
+    "title": "Log in via OTP and reach dashboard with bottom navigation",
+    "description": "This test verifies that a user can complete the mocked OTP login flow and lands on the dashboard with bottom navigation available.",
+    "category": "OTP Login",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill 9999999999 into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Click the action to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP input"
+      },
+      {
+        "type": "action",
+        "description": "Submit the OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the verification spinner to finish"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify bottom navigation is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "First-time OTP login reaches dashboard with Bottom Navigation",
+    "description": "Verifies a first-time user can move from splash to mocked OTP login and reach the authenticated dashboard with persistent bottom navigation visible.",
+    "category": "Property Tax Payment",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the splash animation to complete"
+      },
+      {
+        "type": "action",
+        "description": "Click the splash call-to-action to proceed to login"
+      },
+      {
+        "type": "action",
+        "description": "Fill 9876543210 into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify bottom navigation is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Switch between authenticated tabs using Bottom Navigation",
+    "description": "Verifies a logged-in citizen can use the Bottom Navigation to switch between core authenticated pages and see each destination page render.",
+    "category": "Bottom Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the Home tab in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Services tab in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Complaints tab in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Notifications tab in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Profile tab in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the profile page"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Auth protection blocks direct access to property tax when logged out",
+    "description": "Verifies direct navigation to the property tax route while logged out is blocked by redirecting to the login experience.",
+    "category": "Property Tax Payment",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /property-tax"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is blocked from accessing the authenticated page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login screen is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Bottom Navigation is visible on the dashboard after login",
+    "description": "Verifies that after completing OTP login the dashboard loads and the Bottom Navigation is present for continued navigation.",
+    "category": "Bottom Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the bottom navigation is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Property tax payment completes with receipt confirmation",
+    "description": "Verifies an authenticated citizen can search by property ID, review details, complete the mocked payment, and see a success confirmation with a receipt reference.",
+    "category": "Property Tax Payment",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom navigation item for property tax"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid property ID into the property ID field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the property search"
+      },
+      {
+        "type": "action",
+        "description": "Initiate payment"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the processing state to complete"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a payment success confirmation is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a receipt number is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Bottom Navigation destinations remain accessible across a page refresh",
+    "description": "Verifies that after logging in, refreshing an authenticated page preserves access to Bottom Navigation and navigation still works.",
+    "category": "Bottom Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the Notifications tab in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /notifications"
+      },
+      {
+        "type": "action",
+        "description": "Click the Profile tab in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the profile page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the bottom navigation is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Navigate to Property Tax and Complaints via dashboard quick services",
+    "description": "This test verifies that quick service shortcuts on the dashboard take the user to Property Tax and then to Complaints within the same session.",
+    "category": "Dashboard Quick Services",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Click the action to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP input"
+      },
+      {
+        "type": "action",
+        "description": "Submit the OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the verification spinner to finish"
+      },
+      {
+        "type": "action",
+        "description": "Click the quick service for property tax"
+      },
+      {
+        "type": "action",
+        "description": "Click the back navigation control"
+      },
+      {
+        "type": "action",
+        "description": "Click the quick service for complaints registration"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the complaints page is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Bottom Navigation highlights the active destination when switching tabs",
+    "description": "Verifies that switching tabs updates the active state so the currently selected destination is clearly indicated to the user.",
+    "category": "Bottom Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the Services tab in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Services tab is shown as the active tab"
+      },
+      {
+        "type": "action",
+        "description": "Click the Complaints tab in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Complaints tab is shown as the active tab"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Bottom navigation returns to dashboard after completing property tax receipt",
+    "description": "Verifies the user can complete the property tax flow through receipt and return to the dashboard using bottom navigation.",
+    "category": "Property Tax Payment",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom navigation item for property tax"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid property ID into the property ID field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the property search"
+      },
+      {
+        "type": "action",
+        "description": "Initiate payment"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the processing state to complete"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom navigation item for home"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dashboard quick services are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Bottom navigation switches between notifications and profile and returns reliably",
+    "description": "Verifies an authenticated user can switch between notifications and profile using bottom navigation and both pages render correctly.",
+    "category": "Notifications List",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom navigation item for notifications"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom navigation item for profile"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom navigation item for notifications"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the notifications list is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the profile page can be reached and renders basic profile information"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Complaint submission shows success then complaint history with status badges",
+    "description": "Verifies an authenticated user can submit a new complaint, see a success confirmation, then switch to complaint history and view status badges.",
+    "category": "Complaint Registration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom navigation item for complaints"
+      },
+      {
+        "type": "action",
+        "description": "Select a complaint category"
+      },
+      {
+        "type": "action",
+        "description": "Fill Test complaint description into the complaint description field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Test location into the location field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the complaint form"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the submitting state to complete"
+      },
+      {
+        "type": "action",
+        "description": "Switch to the my complaints tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a complaint submission success confirmation is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify complaint items are listed with status badges"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC013",
+    "title": "Bottom Navigation allows recovery from deep scroll on a page",
+    "description": "Verifies that after scrolling within a long authenticated page the Bottom Navigation still enables switching to another section.",
+    "category": "Bottom Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the Services tab in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the bottom of the services list"
+      },
+      {
+        "type": "action",
+        "description": "Click the Home tab in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the dashboard"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC014",
+    "title": "Notifications list shows unread indicator, type icons, and date stamps",
+    "description": "Verifies an authenticated user can browse notifications and see unread status, notification type icons, and timestamps.",
+    "category": "Notifications List",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom navigation item for notifications"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an unread indicator is shown for an unread notification"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify notification type icons and date stamps are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Bottom Navigation remains usable during rapid tab switching",
+    "description": "Verifies that rapidly switching between Bottom Navigation tabs does not break navigation and the final selected destination loads.",
+    "category": "Bottom Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the Notifications tab in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Complaints tab in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Services tab in the bottom navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click the Home tab in the bottom navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the dashboard"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC016",
+    "title": "Proceed from splash screen to login after animation",
+    "description": "This test verifies that the splash screen completes its animation and the user can proceed to the login page successfully.",
+    "category": "Splash Screen Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for 2 seconds"
+      },
+      {
+        "type": "action",
+        "description": "Click the primary call-to-action to proceed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login page is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC017",
+    "title": "Property search remains disabled when property ID is empty",
+    "description": "Verifies the user cannot initiate a property tax search until a property ID is provided and the UI shows the search action as disabled.",
+    "category": "Property Tax Payment",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the mobile number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the request to send OTP"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234 into the OTP field"
+      },
+      {
+        "type": "action",
+        "description": "Submit OTP verification"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom navigation item for property tax"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the property search action is disabled when the property ID field is empty"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC018",
+    "title": "Prevent sending OTP when mobile number is empty",
+    "description": "This test verifies that the user cannot proceed to request an OTP when the mobile number input is empty.",
+    "category": "OTP Login",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill  into the mobile number field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the send OTP action is disabled"
+      }
+    ],
+    "priority": "Low"
+  }
+]

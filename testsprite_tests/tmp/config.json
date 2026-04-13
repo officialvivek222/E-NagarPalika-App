@@ -1,0 +1,24 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "nextjs-app",
+    "projectPath": "c:\\Users\\shivg\\OneDrive\\Desktop\\New_Antigravity\\Bhadgaon\\nextjs-app",
+    "testIds": [
+      "TC001",
+      "TC002",
+      "TC003",
+      "TC006",
+      "TC012"
+    ],
+    "additionalInstruction": "The login is fully mocked. Any 10-digit number works for the mobile field. For OTP, fill each of the 4 boxes (#otp-0 to #otp-3) individually with a single digit. The app runs in Marathi/Hindi language — look for Devanagari text. There is no real auth guard so /property-tax and /complaints are accessible directly. BottomNav tabs navigate between /dashboard, /services, /complaints, /notifications, /profile.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-dlJ6rn8CjDJDSsxs48ivgtbcB7dNDtPWX-L2fLGd8VmLBtba7WVwn-g42OlfdYV45H_krWHAsRhIe74Cz26JTc4yL56VGTuHwPNq8atGgpo8fS_WyMk6HLDM4o7ypix_YFg"
+    }
+  },
+  "serverPort": 52805,
+  "proxy": "http://5385f54c-540f-4bde-9337-a0e76bc47d5d:1NfKMUALom2x2SfqHqNv4ka260cWozIt@tun.testsprite.com:8080"
+}
